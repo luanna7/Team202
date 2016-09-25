@@ -12,8 +12,10 @@ public class MinionTall extends Minions
      * Act - do whatever the MinionTall wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public void act() 
+
+    public MinionTall()
     {
-        // Add your action code here.
-    }    
+        GreenfootImage image = getImage() ;
+        image.scale( 100, 100 ) ; 
+    }// Add your action code here.  
 }
