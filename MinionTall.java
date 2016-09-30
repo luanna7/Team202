@@ -15,7 +15,6 @@ public class MinionTall extends Minions
 
     public MinionTall()
     {
-        GreenfootImage image = getImage() ;
-        image.scale( 100, 100 ) ; 
+     
     }// Add your action code here.  
 }
