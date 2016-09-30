@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.*;
 /**
  * Write a description of class Swap here.
  * 
@@ -20,6 +20,15 @@ public class Swap extends StepButton
         }
     }
     private void swap() {
-        
+        QuickSortWorld world = (QuickSortWorld)this.getWorld();
+        List<MinionShort> mshort = world.getObjects(MinionShort.class);
+        List<MinionTall> mtall = world.getObjects(MinionTall.class);
+        int right = mtall.get(0).getIndex();
+        int left = mshort.get(0).getIndex();
+        int[] list =  world.list;
+        int tmp = list[right];
+        list[right] = list[left];
+        list[left] = tmp;
+        world.updateList();
     }
 }
