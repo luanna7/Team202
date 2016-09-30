@@ -14,10 +14,23 @@ public class MinionShort extends Minions
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
         // Add your action code here.
+        
+    public int getLocation() {
+        return Location;
+    }
+    public int setLocation(int x) {
+        Location = x;
+    }
+    public int getIndex() {
+        return Index;
+    }
+    public int setIndex(int x) {
+        index = x;
+    }
     public MinionShort()
     {
-        GreenfootImage image = getImage() ;
-        image.scale( 100, 100 ) ; 
+        QuickSortWorld world = (QuickSortWorld)this.getWorld();
+        this.moveto(smallindex,200);
     }
       
 }

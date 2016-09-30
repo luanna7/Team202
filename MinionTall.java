@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class MinionTall here.
+ * This is the tall minion, which will pick the numbers higher than the pivot.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Jiheng Lu
+ * @version 9/24/2016
  */
 public class MinionTall extends Minions
 {
@@ -15,7 +15,6 @@ public class MinionTall extends Minions
 
     public MinionTall()
     {
-        GreenfootImage image = getImage() ;
-        image.scale( 100, 100 ) ; 
+     
     }// Add your action code here.  
 }

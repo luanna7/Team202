@@ -6,12 +6,19 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Pivot extends Actor
+public class Pivot extends Minions
 {
     /**
      * Act - do whatever the Pivot wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    public void setPivot() {
+        QuickSortWorld world = (QuickSortWorld)this.getWorld();
+        int startX = world.getStartX();
+        int endX = world.getEndX();
+        int middle = startX + (endX - startX) / 2;
+        this.moveTo(middle, 200);
+    }
     public void act() 
     {
         // Add your action code here.
