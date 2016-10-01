@@ -1,37 +1,29 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.*;
-
 /**
- * Write a description of class InitialNum here.
+ * Write a description of class Number here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class InitialNum extends Actor
+public class Number extends Actor
 {
     /**
-     * Act - do whatever the InitialNum wants to do. This method is called whenever
+     * Act - do whatever the Number wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    int num;
-    public InitialNum(String str) {
+     public Number()
+    {
         GreenfootImage image = getImage() ;
-        image.scale( 120, 25 ) ;
-        
-        image.setColor(java.awt.Color.BLACK);
-        image.drawString(str, 0, 9); 
-        num = Integer.valueOf(str);
+        image.scale( 150, 40 ) ; 
     }
+    
     public void act() 
     {
         // Add your action code here.
-        QuickSortWorld world = (QuickSortWorld)this.getWorld();
-        if (Greenfoot.mousePressed(this)) {
-            int[] list = pickRandomNum(num);
-            world.drawList(list);
-        }
-    }    
-    private int[] pickRandomNum(int n) {
+    } 
+    
+    public int[] pickRandomNum(int n) {
         int[] list = new int[n];
         HashSet<Integer> set = new HashSet();
         for (int i = 0; i < n; i++) {
@@ -43,5 +35,5 @@ public class InitialNum extends Actor
             list[i] = num;
         }
         return list;
-    }   
+    }  
 }

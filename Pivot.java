@@ -17,10 +17,17 @@ public class Pivot extends Minions
         int startX = world.getStartX();
         int endX = world.getEndX();
         int middle = startX + (endX - startX) / 2;
-        this.moveTo(middle, 200);
+        this.moveTo(middle);
     }
+    
     public void act() 
     {
         // Add your action code here.
-    }    
+    }  
+    
+     public void moveto (int index) {
+      int x = 100 + 30 *index;
+      int y = 100;
+      setLocation(x,y);
+    }
 }

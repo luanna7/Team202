@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.*;
 /**
  * Write a description of class PartitionButton here.
  * 
@@ -12,6 +12,11 @@ public class FindSmall extends StepButton
      * Act - do whatever the PartitionButton wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+     public FindSmall()
+    {
+        GreenfootImage image = getImage() ;
+        image.scale( 250, 80 ) ; 
+    }
     public void act() 
     {
         // Add your action code here.
@@ -20,20 +25,23 @@ public class FindSmall extends StepButton
         }
     }
     private void findSmall() {
-        QuickSortWorld world = (QuickSortWorld)this.getworld();
-        List<MinionShort> minionShort = world.getObejct(MinionShort.class);
+        QuickSortWorld world = (QuickSortWorld)this.getWorld();
+        List<MinionShort> minionShort = world.getObjects(MinionShort.class);
+        int end = world.getEndIndex();
         int pivot = world.getPivot();
         int[] list = world.list;
         int shortIndex = minionShort.get(0).getIndex();
-        while (list[shortIndex] < pivot) {
-            int location = minionShort.get(0).getLocation();
-            location += world.numTagWidth;
+        while (shortIndex <= end && list[shortIndex] < pivot) {
+            int location = minionShort.get(0).getLocationX();
+            System.out.println("new Location: " + location);
+            location += 30;
+            System.out.println("new Location: " + location);
             minionShort.get(0).moveTo(location);
-            minionShort.get(0).set(location);
+            minionShort.get(0).setLocationX(location);
             shortIndex++;
             minionShort.get(0).setIndex(shortIndex);
+            Greenfoot.delay(10);
         }
-
     }
     
 }

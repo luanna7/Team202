@@ -12,6 +12,12 @@ public class SetPivotButton extends StepButton
      * Act - do whatever the SetPivotButton wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    public SetPivotButton()
+    {
+        GreenfootImage image = getImage() ;
+        image.scale( 250, 80 ) ; 
+    }
+
     public void act() 
     {
         // Add your action code here.
@@ -22,6 +28,8 @@ public class SetPivotButton extends StepButton
     private void setPivot() {
         QuickSortWorld world = (QuickSortWorld)this.getWorld();
         List<Pivot> pivot = world.getObjects(Pivot.class);
-        pivot.get(0).setPivot();
+        int p = world.getPivotX();
+        
+        pivot.get(0).moveTo(p);
     }
 }

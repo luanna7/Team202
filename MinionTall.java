@@ -16,5 +16,11 @@ public class MinionTall extends Minions
     public MinionTall()
     {
      
-    }// Add your action code here.  
+    }// Add your action code here.
+    
+     public void moveto (int index) {
+      int x = 100 + 30 *index;
+      int y = 100;
+      setLocation(x,y);
+    }
 }
