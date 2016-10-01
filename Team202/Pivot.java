@@ -12,22 +12,23 @@ public class Pivot extends Minions
      * Act - do whatever the Pivot wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public void setPivot() {
+    
+    public Pivot()
+    {
+        GreenfootImage image = getImage() ;
+        image.scale( 30, 30 ) ; 
+    }
+    /*public void setPivot() {
         QuickSortWorld world = (QuickSortWorld)this.getWorld();
         int startX = world.getStartX();
         int endX = world.getEndX();
         int middle = startX + (endX - startX) / 2;
         this.moveTo(middle);
-    }
+    }*/
     
     public void act() 
     {
         // Add your action code here.
     }  
     
-     public void moveto (int index) {
-      int x = 100 + 30 *index;
-      int y = 100;
-      setLocation(x,y);
-    }
 }

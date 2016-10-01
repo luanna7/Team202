@@ -15,12 +15,9 @@ public class MinionTall extends Minions
 
     public MinionTall()
     {
-     
-    }// Add your action code here.
-    
-     public void moveto (int index) {
-      int x = 100 + 30 *index;
-      int y = 100;
-      setLocation(x,y);
+        GreenfootImage image = getImage() ;
+        image.scale( 30, 30 ) ; 
     }
+    
+
 }
