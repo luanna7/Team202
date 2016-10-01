@@ -35,7 +35,7 @@ public class FindBig extends StepButton
         while (tallIndex >= start && list[tallIndex] > pivot) {
             int location = minionTall.get(0).getLocationX();
             System.out.println("new Location: " + location);
-            location -= 30;
+            location -= 50;
             System.out.println("new Location: " + location);
             minionTall.get(0).moveTo(location);
             minionTall.get(0).setLocationX(location);

@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.*;
 /**
  * Write a description of class ten here.
  * 
@@ -27,6 +27,23 @@ public class ten extends Number
          Number a = new Number();
          int[] list = a.pickRandomNum(10);
          QuickSortWorld world = (QuickSortWorld)this.getWorld();
+         List<NumberTag> num = world.getObjects(NumberTag.class);
+         for (NumberTag j: num) {
+              world.removeObject(j);
+            }
+             List<MinionShort> small = world.getObjects(MinionShort.class);
+         for (MinionShort i: small) {
+              world.removeObject(i);
+            }
+         List<MinionTall> big = world.getObjects(MinionTall.class);
+         for (MinionTall i: big) {
+              world.removeObject(i);
+            }
+         List<Pivot> p = world.getObjects(Pivot.class);
+         for (Pivot i: p) {
+              world.removeObject(i);
+            }
+         world.drawList(list);
          world.drawList(list);
     }   
 }

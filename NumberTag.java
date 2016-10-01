@@ -14,10 +14,9 @@ public class NumberTag extends Actor
      */
     public NumberTag(String str) {
         GreenfootImage image = getImage() ;
-        image.scale( 25, 25 ) ;
-        
+        image.scale( 80, 80 );
         image.setColor(java.awt.Color.BLACK);
-        image.drawString(str, 0, 10); 
+        image.drawString(str, 0, 70); 
     }
     public void act() 
     {

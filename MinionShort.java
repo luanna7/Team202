@@ -16,11 +16,9 @@ public class MinionShort extends Minions
         // Add your action code here.
     public MinionShort()
     {
-        
+        GreenfootImage image = getImage() ;
+        image.scale( 30, 30 ) ; 
     }
-    public void moveto (int index) {
-      int x = 100 + 30 *index;
-      int y = 100;
-      setLocation(x,y);
-    }
+
+  
 }
