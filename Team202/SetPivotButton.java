@@ -27,7 +27,13 @@ public class SetPivotButton extends StepButton
     }    
     private void setPivot() {
         QuickSortWorld world = (QuickSortWorld)this.getWorld();
+        List<Pivot> p = world.getObjects(Pivot.class);
+        for (Pivot i: p) {
+              world.removeObject(i);
+          }
+       
         List<MinionShort> small = world.getObjects(MinionShort.class);
+        
         int start = small.get(0).getLocationX();
         int startindex = small.get(0).getIndex();
         
