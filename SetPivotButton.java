@@ -22,6 +22,8 @@ public class SetPivotButton extends StepButton
     private void setPivot() {
         QuickSortWorld world = (QuickSortWorld)this.getWorld();
         List<Pivot> pivot = world.getObjects(Pivot.class);
-        pivot.get(0).setPivot();
+        int p = world.getPivotX();
+        
+        pivot.get(0).moveTo(p);
     }
 }
