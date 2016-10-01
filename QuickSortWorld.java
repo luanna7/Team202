@@ -40,8 +40,9 @@ public class QuickSortWorld extends World
         
         addObject(new SetPivotButton(), 600, 450);
         addObject(new FindSmall(), 600, 500);
-        addObject(new FindBig(), 600, 550);
-        addObject(new Swap(), 600, 600);
+        addObject(new FindBig(), 650, 300);
+        addObject(new Swap(), 650, 400);
+        addObject(new Done(), 650, 500);
         
     }
     public int getStartX() {
