@@ -30,6 +30,8 @@ public class QuickSortWorld extends World
         prepare();
     }
     private void prepare() {
+        this.setBackground(new GreenfootImage("background.jpg"));
+        
         Messages message = new Messages();
         message.setMessage("Pick a number: ");
         addObject(message, 240, 550);
