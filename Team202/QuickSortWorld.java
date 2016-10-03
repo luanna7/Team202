@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.*;
 
 /**
  * Write a description of class MyWorld here.
@@ -13,8 +14,8 @@ public class QuickSortWorld extends World
      * Constructor for objects of class MyWorld.
      * 
      */
-    public int numTagHeight = 30;
-    public int numTagWidth = 30;
+    public int numTagHeight = 50;
+    public int numTagWidth = 50;
     int startX = 0;
     int endX = 0;
     int startIndex = 0;
@@ -30,18 +31,15 @@ public class QuickSortWorld extends World
         prepare();
     }
     private void prepare() {
-        this.setBackground(new GreenfootImage("background.jpg"));
+        addObject(new Number(), 80, 500);
         
-        Messages message = new Messages();
-        message.setMessage("Pick a number: ");
-        addObject(message, 240, 550);
         
-        addObject(new InitialNum("5"), 745, 300);
-        addObject(new InitialNum("10"), 745, 400);
-        addObject(new InitialNum("20"), 745, 500);
+        addObject(new five(), 200, 550);
+        addObject(new eight(), 300, 550);
+        addObject(new ten(), 400, 550);
         
-        addObject(new SetPivotButton(), 600, 450);
-        addObject(new FindSmall(), 600, 500);
+        addObject(new SetPivotButton(), 650, 100);
+        addObject(new FindSmall(), 650, 200);
         addObject(new FindBig(), 650, 300);
         addObject(new Swap(), 650, 400);
         addObject(new Done(), 650, 500);
@@ -92,38 +90,50 @@ public class QuickSortWorld extends World
     public void drawList(int[] list) {
         this.list = list;
         int size = list.length;
-        startX = 400 - size / 2 * numTagWidth;
-        endX = (size - 1) * numTagWidth + startX;
+        startX = 70;//400 - size / 2 * numTagWidth;
+        endX = startX + (size - 1)*numTagWidth; //(size - 1) * numTagWidth + startX;
+        
+        //NumberTag num = new NumberTag(String.valueOf(list));
+        
         startIndex = 0;
         endIndex = size - 1;
         setPivotIndex();
         setPivot();
         setPivotX();
-        System.out.println(pivot);
+        //System.out.println(pivot);
+        
         MinionShort minionShort = new MinionShort();
         addObject(minionShort, startX, 200);
         minionShort.setLocationX(startX);
         minionShort.setIndex(startIndex);
         System.out.println("ShortLocation: " + startX);
-        minionShort.setIndex(startIndex);
+  
         MinionTall minionTall = new MinionTall();
         addObject(minionTall, endX, 200);
         minionTall.setLocationX(endX);
         minionTall.setIndex(endIndex);
-        Pivot pivot = new Pivot();
+        
+        /*Pivot pivot = new Pivot();
         addObject(pivot, pivotX, 200);
         pivot.setLocationX(pivotX);
-        pivot.setIndex(pivotIndex);
+        pivot.setIndex(pivotIndex);*/
         int start = startX;
         for (int i = 0; i < size; i++) {
-            addObject(new NumberTag(String.valueOf(list[i])), start, 300);
+            System.out.println("1:"+ start);
+            addObject(new NumberTag(String.valueOf(list[i])), start + 40, 200);
             start += numTagWidth;
         }
     }
+    
     public void updateList() {
-        int start = startX;
+         List<NumberTag> num = getObjects(NumberTag.class);
+         for (NumberTag j: num) {
+              removeObject(j);
+            }
+       int start = startX;
         for (int i = 0; i <= endIndex; i++) {
-            addObject(new NumberTag(String.valueOf(list[i])), start, 300);
+            System.out.println("2:" + start);
+            addObject(new NumberTag(String.valueOf(list[i])), start + 40, 200);
             start += numTagWidth;
         }
     }
