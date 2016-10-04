@@ -8,15 +8,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Done extends StepButton
 {
+    /**
+     * Act - do whatever the Done wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
     public Done()
     {
         GreenfootImage image = getImage() ;
         image.scale( 250, 80 ) ; 
     }
-    /**
-     * Act - do whatever the Done wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     public void act() 
     {
         // Add your action code here.

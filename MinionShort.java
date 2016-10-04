@@ -16,7 +16,9 @@ public class MinionShort extends Minions
         // Add your action code here.
     public MinionShort()
     {
-        
+        GreenfootImage image = getImage() ;
+        image.scale( 30, 30 ) ; 
     }
-      
+
+  
 }

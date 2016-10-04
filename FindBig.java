@@ -12,12 +12,12 @@ public class FindBig extends StepButton
      * Act - do whatever the FindBig wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    
     public FindBig()
     {
         GreenfootImage image = getImage() ;
         image.scale( 250, 80 ) ; 
     }
-    
     public void act() 
     {
         // Add your action code here.
@@ -35,7 +35,7 @@ public class FindBig extends StepButton
         while (tallIndex >= start && list[tallIndex] > pivot) {
             int location = minionTall.get(0).getLocationX();
             System.out.println("new Location: " + location);
-            location -= 30;
+            location -= 50;
             System.out.println("new Location: " + location);
             minionTall.get(0).moveTo(location);
             minionTall.get(0).setLocationX(location);
