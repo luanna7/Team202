@@ -12,6 +12,11 @@ public class FindSmall extends StepButton
      * Act - do whatever the PartitionButton wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+     public FindSmall()
+    {
+        GreenfootImage image = getImage() ;
+        image.scale( 250, 80 ) ; 
+    }
     public void act() 
     {
         // Add your action code here.
@@ -29,13 +34,13 @@ public class FindSmall extends StepButton
         while (shortIndex <= end && list[shortIndex] < pivot) {
             int location = minionShort.get(0).getLocationX();
             System.out.println("new Location: " + location);
-            location += 30;
+            location += 50;
             System.out.println("new Location: " + location);
             minionShort.get(0).moveTo(location);
             minionShort.get(0).setLocationX(location);
             shortIndex++;
             minionShort.get(0).setIndex(shortIndex);
-            Greenfoot.delay(20);
+            Greenfoot.delay(10);
         }
     }
     
