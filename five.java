@@ -44,6 +44,6 @@ public class five extends Number
               world.removeObject(i);
             }
          world.drawList(list);
-         world.drawList(list);
+         //world.drawList(list);
     }
 }

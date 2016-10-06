@@ -30,11 +30,7 @@ public class Minions extends Actor
     public void moveTo(int x) {
         this.setLocation(x, y);
     }
-    
-    public Minions() {
-        GreenfootImage image = getImage();
-        image.scale(30, 30);
-    }
+
     public void act() 
     {
         // Add your action code here.

@@ -24,38 +24,28 @@ public class QuickSortWorld extends World
     int pivotIndex = 0;
     int pivotX = 0;
     public int[] list;
-    
-    private QuickSortProcess quicksortprocess;
-    private TestFindSmall testFindSmall;
-    private TestSwap testSwap;
-    
+    public Stack<Integer> stack = new Stack();
     public QuickSortWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(800, 600, 1);
         prepare();
     }
-    
     private void prepare() {
         addObject(new Number(), 80, 500);
-
+        
+        
         addObject(new five(), 200, 550);
         addObject(new eight(), 300, 550);
         addObject(new ten(), 400, 550);
-
+        
         addObject(new SetPivotButton(), 650, 100);
         addObject(new FindSmall(), 650, 200);
         addObject(new FindBig(), 650, 300);
         addObject(new Swap(), 650, 400);
         addObject(new Done(), 650, 500);
-        this.quicksortprocess = new QuickSortProcess(0);
-        addObject(this.quicksortprocess,62,62);
-        testFindSmall = new TestFindSmall();
-        addObject(testFindSmall,583,570);
-        this.testSwap = new TestSwap();
-        addObject(testSwap,679,572);
+        
     }
-
     public int getStartX() {
         return startX;
     }
@@ -77,22 +67,11 @@ public class QuickSortWorld extends World
     public int getPivotX() {
         return pivotX;
     }
-    public int[] getList() {
-        return this.list;
-    }
-    public TestFindSmall getTestFindSmall()
-    {
-        return this.testFindSmall;
-    }
-    public TestSwap getTestSwap()
-    {
-        return this.testSwap;
-    }
     public void setStartX(int x) {
-        startX = x;
+        startX = 70 + x * numTagWidth;
     }
     public void setEndX(int x) {
-        endX = x;
+        endX = 70 + x * numTagWidth;
     }
     public void setStartIndex(int x) {
         startIndex = x;
@@ -104,25 +83,21 @@ public class QuickSortWorld extends World
         pivot = list[pivotIndex];
     }
     public void setPivotIndex() {
-        pivotIndex = (startIndex + endIndex) / 2;
+        pivotIndex = endIndex;
     }
     public void setPivotX() {
-        pivotX = startX + (endIndex - startIndex) * numTagWidth / 2;
+        pivotX = startX + (endIndex - startIndex) * numTagWidth;
     }
     public void drawList(int[] list) {
         this.list = list;
         int size = list.length;
         startX = 70;//400 - size / 2 * numTagWidth;
         endX = startX + (size - 1)*numTagWidth; //(size - 1) * numTagWidth + startX;
-        
-        //NumberTag num = new NumberTag(String.valueOf(list));
-        
         startIndex = 0;
         endIndex = size - 1;
         setPivotIndex();
         setPivot();
         setPivotX();
-        //System.out.println(pivot);
         
         MinionShort minionShort = new MinionShort();
         addObject(minionShort, startX, 200);
@@ -135,10 +110,6 @@ public class QuickSortWorld extends World
         minionTall.setLocationX(endX);
         minionTall.setIndex(endIndex);
         
-        /*Pivot pivot = new Pivot();
-        addObject(pivot, pivotX, 200);
-        pivot.setLocationX(pivotX);
-        pivot.setIndex(pivotIndex);*/
         int start = startX;
         for (int i = 0; i < size; i++) {
             System.out.println("1:"+ start);
@@ -152,8 +123,8 @@ public class QuickSortWorld extends World
          for (NumberTag j: num) {
               removeObject(j);
             }
-       int start = startX;
-        for (int i = 0; i <= endIndex; i++) {
+        int start = 70;
+        for (int i = 0; i < list.length; i++) {
             System.out.println("2:" + start);
             addObject(new NumberTag(String.valueOf(list[i])), start + 40, 200);
             start += numTagWidth;

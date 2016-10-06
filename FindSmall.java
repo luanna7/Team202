@@ -27,11 +27,13 @@ public class FindSmall extends StepButton
     private void findSmall() {
         QuickSortWorld world = (QuickSortWorld)this.getWorld();
         List<MinionShort> minionShort = world.getObjects(MinionShort.class);
+        List<MinionTall> minionTall = world.getObjects(MinionTall.class);
         int end = world.getEndIndex();
         int pivot = world.getPivot();
         int[] list = world.list;
         int shortIndex = minionShort.get(0).getIndex();
-        while (shortIndex <= end && list[shortIndex] < pivot) {
+        int tallIndex = minionTall.get(0).getIndex();
+        while (shortIndex < tallIndex && list[shortIndex] < pivot) {
             int location = minionShort.get(0).getLocationX();
             System.out.println("new Location: " + location);
             location += 50;
