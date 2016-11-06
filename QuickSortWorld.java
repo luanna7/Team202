@@ -32,6 +32,7 @@ public class QuickSortWorld extends World
         prepare();
     }
     private void prepare() {
+        setBackground("images_background.jpg");
         addObject(new Number(), 80, 500);
         
         
@@ -39,11 +40,11 @@ public class QuickSortWorld extends World
         addObject(new eight(), 300, 550);
         addObject(new ten(), 400, 550);
         
-        addObject(new SetPivotButton(), 650, 100);
-        addObject(new FindSmall(), 650, 200);
-        addObject(new FindBig(), 650, 300);
-        addObject(new Swap(), 650, 400);
-        addObject(new Done(), 650, 500);
+        addObject(new SetPivotButton(), 650, 190);
+        addObject(new FindSmall(), 650, 280);
+        addObject(new FindBig(), 650, 370);
+        addObject(new Swap(), 650, 460);
+        addObject(new Done(), 650, 550);
         
     }
     public int getStartX() {
