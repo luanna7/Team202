@@ -9,6 +9,7 @@ import java.util.*;
  */
 public class Done extends StepButton
 {
+    private boolean finishFlag;
     /**
      * Act - do whatever the Done wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -17,12 +18,29 @@ public class Done extends StepButton
     {
         GreenfootImage image = getImage() ;
         image.scale( 250, 80 ) ; 
+        this.finishFlag = false;
     }
     public void act() 
     {
         // Add your action code here.
-        if (Greenfoot.mousePressed(this)) {
+        GameStateManager gm = GameStateManager.getInstance();
+        GameStates gs = gm.getGameCurrentState();
+        if (gs == GameStates.BeforeSwap && meet() == true && Greenfoot.mousePressed(this)) {
             this.doneFunction();
+            gm.doClickDone();
+            gm.showGameCurrentState();
+            if (isStackEmpty() == false) {
+                gm.doGotoInitArray();
+                gm.showGameCurrentState();
+            }
+            else if (this.finishFlag == true && isStackEmpty() == true) {
+                System.out.println("********QuickSort Finish*********");
+                gm.showGameCurrentState();
+            }
+            else {               
+                gm.doGotoInitArray();
+                gm.showGameCurrentState();
+            }
         }
     }    
     private void doneFunction() {
@@ -53,6 +71,13 @@ public class Done extends StepButton
         }
         if (stack.isEmpty()) {
             System.out.println("********done*********");
+            this.finishFlag = true;
+            if (isStackEmpty() == true) {
+                System.out.println("World Stack is Empty!");
+            }
+            else {
+                System.out.println("World Stack isn't Empty!");
+            }
             return;
         }
         int rightIndex = stack.pop();
@@ -67,5 +92,33 @@ public class Done extends StepButton
         minionTall.get(0).setIndex(world.getEndIndex());
         minionShort.get(0).setLocationX(world.getStartX());
         minionTall.get(0).setLocationX(world.getEndX());
+    }
+    private boolean meet() {
+        QuickSortWorld world = (QuickSortWorld)this.getWorld();
+        List<MinionShort> mshort = world.getObjects(MinionShort.class);
+        List<MinionTall> mtall = world.getObjects(MinionTall.class);
+        if (mtall.size() != 0) {
+            int right = mtall.get(0).getIndex();
+            int left = mshort.get(0).getIndex();
+            if (left >= right) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        else {
+            return false;
+        }
+    }
+    private boolean isStackEmpty() {
+        QuickSortWorld world = (QuickSortWorld)this.getWorld();
+        Stack<Integer> stack = world.stack;
+        if (stack.isEmpty()) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }

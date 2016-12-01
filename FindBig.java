@@ -21,8 +21,20 @@ public class FindBig extends StepButton
     public void act() 
     {
         // Add your action code here.
-        if (Greenfoot.mousePressed(this)) {
+        GameStateManager gm = GameStateManager.getInstance();
+        GameStates gs = gm.getGameCurrentState();
+        if (gs == GameStates.PivotInit && Greenfoot.mousePressed(this)) {
             this.findBig();
+            gm.doClickTallMinion();
+            gm.showGameCurrentState();
+        }
+        else if (gs == GameStates.EndShortMinion && Greenfoot.mousePressed(this)) {
+            this.findBig();
+            gm.doClickTallMinion();
+            gm.showGameCurrentState();
+        }
+        else {
+            ;
         }
     }
     private void findBig() {
@@ -34,7 +46,7 @@ public class FindBig extends StepButton
         int[] list = world.list;
         int tallIndex = minionTall.get(0).getIndex();
         int shortIndex = minionShort.get(0).getIndex();
-        while (tallIndex > shortIndex && list[tallIndex] >= pivot) {
+        while (tallIndex >= shortIndex && tallIndex > 0 && list[tallIndex] >= pivot) {
             int location = minionTall.get(0).getLocationX();
             System.out.println("new Location: " + location);
             location -= 50;

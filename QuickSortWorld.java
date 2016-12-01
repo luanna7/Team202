@@ -23,16 +23,21 @@ public class QuickSortWorld extends World
     int pivot = 0;
     int pivotIndex = 0;
     int pivotX = 0;
+    long timeBegan = 0;
+    int number = 0;
+    String palyername = "";
+    String res = "";
+    // GameStateManager gameStateManager = null;
     public int[] list;
     public Stack<Integer> stack = new Stack();
     public QuickSortWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(800, 600, 1);
+        // this.gameStateManager = new GameStateManager();
         prepare();
     }
     private void prepare() {
-        setBackground("images_background.jpg");
         addObject(new Number(), 80, 500);
         
         
@@ -40,12 +45,40 @@ public class QuickSortWorld extends World
         addObject(new eight(), 300, 550);
         addObject(new ten(), 400, 550);
         
-        addObject(new SetPivotButton(), 650, 190);
-        addObject(new FindSmall(), 650, 280);
-        addObject(new FindBig(), 650, 370);
-        addObject(new Swap(), 650, 460);
-        addObject(new Done(), 650, 550);
-        
+        addObject(new toprank(), 650,50);
+        addObject(new SetPivotButton(), 650, 240);
+        addObject(new FindSmall(), 650, 320);
+        addObject(new FindBig(), 650, 400);
+        addObject(new Swap(), 650, 480);
+        addObject(new Done(), 650, 560);
+        addObject(new Submit(), 50,50);
+        addObject(new NameText(), 300,50);
+        GameStateManager gm = GameStateManager.getInstance();
+        gm.reset();
+    }
+    public String getFinalResult() {
+        return res;
+    }
+    public void setFinalResult(String x) {
+        res = x;
+    }
+    public String getPlayerName() {
+        return palyername;
+    }
+    public void setPlayerName(String text) {
+        palyername = text;
+    }
+    public int getNumber() {
+        return number;
+    }
+    public void setNumber(int x) {
+        number = x;
+    }
+    public long getTimeBegan(){
+        return timeBegan;
+    }
+    public void setTimeBegan(long x) {
+        timeBegan = x;
     }
     public int getStartX() {
         return startX;
@@ -68,6 +101,10 @@ public class QuickSortWorld extends World
     public int getPivotX() {
         return pivotX;
     }
+    // public GameStateManager getGameStateManager()
+    // {
+    //    return this.gameStateManager;
+    // }
     public void setStartX(int x) {
         startX = 70 + x * numTagWidth;
     }
@@ -129,6 +166,14 @@ public class QuickSortWorld extends World
             System.out.println("2:" + start);
             addObject(new NumberTag(String.valueOf(list[i])), start + 40, 200);
             start += numTagWidth;
+        }
+    }
+    
+    public void drawRank(String[] toprank) { 
+        int start = 80;
+         for (int i = 0; i < toprank.length; i++) {
+            addObject(new rankTag(toprank[i]), 650, start + 30);
+            start += 20;
         }
     }
 }

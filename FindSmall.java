@@ -20,8 +20,20 @@ public class FindSmall extends StepButton
     public void act() 
     {
         // Add your action code here.
-        if (Greenfoot.mousePressed(this)) {
+        GameStateManager gm = GameStateManager.getInstance();
+        GameStates gs = gm.getGameCurrentState();
+        if (gs == GameStates.PivotInit && Greenfoot.mousePressed(this)) {
             this.findSmall();
+            gm.doClickShortMinion();
+            gm.showGameCurrentState();
+        }
+        else if (gs == GameStates.EndTallMinion && Greenfoot.mousePressed(this)) {
+            this.findSmall();
+            gm.doClickShortMinion();
+            gm.showGameCurrentState();
+        }
+        else {
+            ;
         }
     }
     private void findSmall() {
@@ -31,9 +43,10 @@ public class FindSmall extends StepButton
         int end = world.getEndIndex();
         int pivot = world.getPivot();
         int[] list = world.list;
+        int length = list.length;
         int shortIndex = minionShort.get(0).getIndex();
         int tallIndex = minionTall.get(0).getIndex();
-        while (shortIndex < tallIndex && list[shortIndex] < pivot) {
+        while (shortIndex <= tallIndex && (shortIndex < length - 1) && list[shortIndex] < pivot) {
             int location = minionShort.get(0).getLocationX();
             System.out.println("new Location: " + location);
             location += 50;

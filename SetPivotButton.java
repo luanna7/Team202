@@ -21,8 +21,13 @@ public class SetPivotButton extends StepButton
     public void act() 
     {
         // Add your action code here.
-        if (Greenfoot.mousePressed(this)) {
+        GameStateManager gm = GameStateManager.getInstance();
+        GameStates gs = gm.getGameCurrentState();
+        if (gs == GameStates.InitArray && Greenfoot.mousePressed(this)) {
             this.setPivot();
+            gm.doSetPivot();
+            gm.showGameCurrentState();
+            // GameStateManager gameStateManager = world.getGameStateManager();
         }
     }    
     private void setPivot() {

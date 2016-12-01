@@ -19,8 +19,14 @@ public class eight extends Number
     }
     public void act() 
     {
-        if (Greenfoot.mousePressed(this)) {
+        GameStateManager gm = GameStateManager.getInstance();
+        GameStates gs = gm.getGameCurrentState();
+        if (gs == GameStates.BeforeStart && Greenfoot.mousePressed(this)) {
+            QuickSortWorld world = (QuickSortWorld)this.getWorld();
+            world.setNumber(8);
             this.eight();
+            gm.doClickNumber();
+            world.setTimeBegan(System.currentTimeMillis());
         } // Add your action code here.
     }    
     public void eight() {
